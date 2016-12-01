@@ -1,0 +1,39 @@
+{
+  "name": "htmlclean-loader",
+  "version": "0.0.1",
+  "title": "htmlclean-loader",
+  "description": "htmlclean loader module for webpack - Simple and safety HTML/SVG cleaner to minify without changing its structure.",
+  "keywords": [
+    "webpack",
+    "html",
+    "svg",
+    "clean",
+    "whitespace",
+    "linebreak",
+    "comment",
+    "minify",
+    "compress",
+    "lightweight"
+  ],
+  "dependencies": {
+    "loader-utils": "^0.2.16"
+  },
+  "peerDependencies": {
+    "htmlclean": ">=2.0.0"
+  },
+  "devDependencies": {
+    "htmlclean": "^2.7.7",
+    "webpack": "^1.13.3"
+  },
+  "homepage": "https://github.com/anseki/htmlclean-loader",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/anseki/htmlclean-loader.git"
+  },
+  "bugs": "https://github.com/anseki/htmlclean-loader/issues",
+  "license": "MIT",
+  "author": {
+    "name": "anseki",
+    "url": "https://github.com/anseki"
+  }
+}
