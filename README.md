@@ -118,15 +118,10 @@ var
 
 module.exports = {
   // ...
-  module: {
-    loaders: [
-      {test: /\.html$/, loader: 'htmlclean'}
-    ]
-  },
   // options-A
   optionsA: {
     protect: /foo/g,
-  }
+  },
   // options-B
   optionsB: {
     protect: /bar/g,
