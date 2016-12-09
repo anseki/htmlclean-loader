@@ -5,6 +5,7 @@
   "description": "htmlclean loader module for webpack - Simple and safety HTML/SVG cleaner to minify without changing its structure.",
   "keywords": [
     "webpack",
+    "loader",
     "html",
     "svg",
     "clean",

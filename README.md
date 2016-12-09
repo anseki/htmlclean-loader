@@ -58,8 +58,7 @@ There are three ways to specify options.
 
 ### Query parameters
 
-You can specify the options via query parameters.
-See: http://webpack.github.io/docs/using-loaders.html#query-parameters
+You can specify the options via query parameters. See: http://webpack.github.io/docs/using-loaders.html#query-parameters
 
 Note that RegExp and function can not be specified via the query parameters. Use webpack configuration if you want to specify these types.
 
@@ -100,7 +99,7 @@ module.exports = {
 ### Specified property
 
 You can specify a name via a `config` query parameter, and you can specify the options via an object that has this name in webpack configuration.  
-This is useful for switching the options by each file.
+This is useful for switching the options by each file or condition.
 
 For example:
 
@@ -132,6 +131,9 @@ module.exports = {
 ## Additional Option
 
 ### `raw`
+
+*Type:* boolean  
+*Default:* Automatic
 
 This loader outputs a JavaScript code when it is specified as a final loader, otherwise it outputs a raw HTML code for next loader that expects it to be given, automatically.  
 That is, when it is specified as a final loader, it works like that a `raw-loader` is chained to `loaders` list.  
