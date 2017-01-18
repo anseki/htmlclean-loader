@@ -22,14 +22,37 @@ For example:
 
 ```js
 // app.js
-
 var headerHtml = require('./header.html');
 document.getElementById('header').innerHTML = headerHtml;
 ```
 
+**webpack v2**
+
 ```js
 // webpack.config.js
+module.exports = {
+  entry: './app.js',
+  output: {
+    filename: 'bundle.js'
+  },
+  module: {
+    rules: [{
+      test: /\.html$/,
+      use: [{
+        loader: 'htmlclean-loader',
+        options: {
+          protect: /<\!--%fooTemplate\b.*?%-->/g
+        }
+      }]
+    }]
+  }
+};
+```
 
+**webpack v1**
+
+```js
+// webpack.config.js
 module.exports = {
   entry: './app.js',
   output: {
@@ -37,10 +60,10 @@ module.exports = {
   },
   module: {
     loaders: [
-      {test: /\.html$/, loader: 'htmlclean'}
+      {test: /\.html$/, loader: 'htmlclean-loader'}
     ]
   },
-  // htmlclean options
+  // htmlclean-loader options
   htmlcleanLoader: {
     protect: /<\!--%fooTemplate\b.*?%-->/g
   }
@@ -53,8 +76,8 @@ You can specify options for behavior of htmlclean. See [htmlclean](https://githu
 There are three ways to specify options.
 
 * Query parameters
-* `htmlcleanLoader` object in webpack configuration
-* Specified property in webpack configuration
+* `options` (webpack v2) or `htmlcleanLoader` (webpack v1) object in webpack configuration
+* Specified property in webpack configuration (webpack v1)
 
 ### Query parameters
 
@@ -66,27 +89,50 @@ For example:
 
 ```js
 // app.js
-
-var code = require('raw!htmlclean?raw=false!./header.html');
+var code = require('raw!htmlclean-loader?raw=false!./header.html');
 ```
 
-### `htmlcleanLoader`
+### `options` (webpack v2) or `htmlcleanLoader` (webpack v1)
 
-You can specify the options via a `htmlcleanLoader` object in webpack configuration.
+You can specify the options via a `options` (webpack v2) or `htmlcleanLoader` (webpack v1) object in webpack configuration.
 
 For example:
 
+**webpack v2**
+
 ```js
 // webpack.config.js
+module.exports = {
+  // ...
+  module: {
+    rules: [{
+      test: /\.html$/,
+      use: [{
+        loader: 'htmlclean-loader',
+        options: {
+          protect: /<\!--%fooTemplate\b.*?%-->/g,
+          edit: function(html) {
+            return html.replace(/foo/g, 'bar');
+          }
+        }
+      }]
+    }]
+  }
+};
+```
 
+**webpack v1**
+
+```js
+// webpack.config.js
 module.exports = {
   // ...
   module: {
     loaders: [
-      {test: /\.html$/, loader: 'htmlclean'}
+      {test: /\.html$/, loader: 'htmlclean-loader'}
     ]
   },
-  // htmlclean options
+  // htmlclean-loader options
   htmlcleanLoader: {
     protect: /<\!--%fooTemplate\b.*?%-->/g,
     edit: function(html) {
@@ -96,7 +142,7 @@ module.exports = {
 };
 ```
 
-### Specified property
+### Specified property (webpack v1)
 
 You can specify a name via a `config` query parameter, and you can specify the options via an object that has this name in webpack configuration.  
 This is useful for switching the options by each file or condition.
@@ -105,16 +151,14 @@ For example:
 
 ```js
 // app.js
-
 var
-  html1 = require('htmlclean?config=optionsA!./file-1.html'),
-  html2 = require('htmlclean?config=optionsB!./file-2.html');
+  html1 = require('htmlclean-loader?config=optionsA!./file-1.html'),
+  html2 = require('htmlclean-loader?config=optionsB!./file-2.html');
 // Or, you can specify these parameters in webpack configuration.
 ```
 
 ```js
 // webpack.config.js
-
 module.exports = {
   // ...
   // options-A
@@ -139,14 +183,44 @@ This loader outputs a JavaScript code when it is specified as a final loader, ot
 That is, when it is specified as a final loader, it works like that a `raw-loader` is chained to `loaders` list.  
 For example, the following two codes work same:
 
+**webpack v2**
+
 ```js
 // webpack.config.js
+module.exports = {
+  // ...
+  module: {
+    // Actually, `raw-loader` is unnecessary.
+    rules: [{test: /\.html$/, use: ['raw-loader', 'htmlclean-loader']}]
+    // htmlclean-loader passes a raw HTML code to raw-loader,
+    // and raw-loader changes it to a JavaScript code and outputs it.
+  }
+};
+```
 
+**webpack v2**
+
+```js
+// webpack.config.js
+module.exports = {
+  // ...
+  module: {
+    rules: [{test: /\.html$/, use: ['htmlclean-loader']}]
+    // htmlclean-loader outputs a JavaScript code.
+  }
+};
+```
+
+**webpack v1**
+
+```js
+// webpack.config.js
 module.exports = {
   // ...
   module: {
     loaders: [
-      {test: /\.html$/, loaders: ['raw', 'htmlclean']} // Actually, `raw` is unnecessary.
+      // Actually, `raw-loader` is unnecessary.
+      {test: /\.html$/, loaders: ['raw-loader', 'htmlclean-loader']}
       // htmlclean-loader passes a raw HTML code to raw-loader,
       // and raw-loader changes it to a JavaScript code and outputs it.
     ]
@@ -154,14 +228,15 @@ module.exports = {
 };
 ```
 
+**webpack v1**
+
 ```js
 // webpack.config.js
-
 module.exports = {
   // ...
   module: {
     loaders: [
-      {test: /\.html$/, loader: 'htmlclean'}
+      {test: /\.html$/, loader: 'htmlclean-loader'}
       // htmlclean-loader outputs a JavaScript code.
     ]
   }
