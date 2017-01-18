@@ -94,7 +94,7 @@ var code = require('raw!htmlclean-loader?raw=false!./header.html');
 
 ### `options` (webpack v2) or `htmlcleanLoader` (webpack v1)
 
-You can specify the options via a `options` (webpack v2) or `htmlcleanLoader` (webpack v1) object in webpack configuration.
+You can specify the options via an `options` (webpack v2) or `htmlcleanLoader` (webpack v1) object in webpack configuration.
 
 For example:
 
