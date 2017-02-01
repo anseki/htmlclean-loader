@@ -1,5 +1,7 @@
 # htmlclean-loader
 
+[![npm](https://img.shields.io/npm/v/htmlclean-loader.svg)](https://www.npmjs.com/package/htmlclean-loader) [![GitHub issues](https://img.shields.io/github/issues/anseki/htmlclean-loader.svg)](https://github.com/anseki/htmlclean-loader/issues) [![David](https://img.shields.io/david/anseki/htmlclean-loader.svg)](package.json) [![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE-MIT)
+
 [htmlclean](https://github.com/anseki/htmlclean) loader module for [webpack](http://webpack.github.io/).
 
 * [Grunt](http://gruntjs.com/) plugin: [grunt-htmlclean](https://github.com/anseki/grunt-htmlclean)
