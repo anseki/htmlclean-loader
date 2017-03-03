@@ -17,14 +17,14 @@
     "lightweight"
   ],
   "dependencies": {
-    "loader-utils": "^0.2.16"
+    "loader-utils": "^1.0.2"
   },
   "peerDependencies": {
     "htmlclean": ">=2.0.0"
   },
   "devDependencies": {
     "htmlclean": "^2.7.7",
-    "webpack": "^1.13.3"
+    "webpack": "^2.2.1"
   },
   "homepage": "https://github.com/anseki/htmlclean-loader",
   "repository": {
