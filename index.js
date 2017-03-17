@@ -4,8 +4,7 @@ var htmlclean = require('htmlclean'),
   loaderUtils = require('loader-utils');
 
 module.exports = function(source) {
-  var options = (loaderUtils.getOptions ? loaderUtils.getOptions(this) :
-      loaderUtils.getLoaderConfig(this, 'htmlcleanLoader')) || {},
+  var options = loaderUtils.getOptions(this) || {},
     html = htmlclean(source + '', options),
     raw = typeof options.raw === 'boolean' ? options.raw : this.loaderIndex > 0;
   this.cacheable && this.cacheable();
