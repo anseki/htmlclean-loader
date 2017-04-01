@@ -62,13 +62,11 @@ module.exports = {
   module: {
     rules: [{
       test: /\.html$/,
-      use: {
-        loader: 'htmlclean-loader',
-        options: {
-          protect: /<\!--%fooTemplate\b.*?%-->/g,
-          edit: function(html) {
-            return html.replace(/foo/g, 'bar');
-          }
+      loader: 'htmlclean-loader',
+      options: {
+        protect: /<\!--%fooTemplate\b.*?%-->/g,
+        edit: function(html) {
+          return html.replace(/foo/g, 'bar');
         }
       }
     }]
