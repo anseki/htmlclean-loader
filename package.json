@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "htmlclean": "^3.0.2",
-    "webpack": "^2.3.2"
+    "webpack": "^2.3.3"
   },
   "homepage": "https://github.com/anseki/htmlclean-loader",
   "repository": {
