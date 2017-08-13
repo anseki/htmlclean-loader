@@ -1,6 +1,6 @@
 {
   "name": "htmlclean-loader",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "title": "htmlclean-loader",
   "description": "htmlclean loader module for webpack - Simple and safety HTML/SVG cleaner to minify without changing its structure.",
   "keywords": [
@@ -20,11 +20,11 @@
     "loader-utils": "^1.1.0"
   },
   "peerDependencies": {
-    "htmlclean": "^3.0.2"
+    "htmlclean": "^3.0.3"
   },
   "devDependencies": {
-    "htmlclean": "^3.0.2",
-    "webpack": "^2.3.3"
+    "htmlclean": "^3.0.3",
+    "webpack": "^3.5.4"
   },
   "homepage": "https://github.com/anseki/htmlclean-loader",
   "repository": {
