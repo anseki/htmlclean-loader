@@ -1,6 +1,6 @@
 {
   "name": "htmlclean-loader",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "title": "htmlclean-loader",
   "description": "htmlclean loader module for webpack - Simple and safety HTML/SVG cleaner to minify without changing its structure.",
   "keywords": [
