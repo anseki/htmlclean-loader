@@ -24,11 +24,11 @@
     "loader-utils": "^1.1.0"
   },
   "peerDependencies": {
-    "htmlclean": "^3.0.5"
+    "htmlclean": "^3.0.6"
   },
   "devDependencies": {
-    "htmlclean": "^3.0.5",
-    "webpack": "^3.5.4"
+    "htmlclean": "^3.0.6",
+    "webpack": "^3.11.0"
   },
   "homepage": "https://github.com/anseki/htmlclean-loader",
   "repository": {
