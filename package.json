@@ -17,8 +17,7 @@
     "lightweight"
   ],
   "files": [
-    "index.js",
-    "LICENSE-MIT"
+    "index.js"
   ],
   "dependencies": {
     "loader-utils": "^1.1.0"
