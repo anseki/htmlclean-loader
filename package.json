@@ -16,18 +16,24 @@
     "compress",
     "lightweight"
   ],
+  "main": "./lib/htmlclean-loader.js",
   "files": [
-    "index.js"
+    "lib/*.js"
   ],
   "dependencies": {
     "loader-utils": "^1.1.0"
   },
   "peerDependencies": {
-    "htmlclean": "^3.0.8"
+    "htmlclean": "~3.0.8"
   },
   "devDependencies": {
-    "htmlclean": "^3.0.8",
-    "webpack": "^3.11.0"
+    "chai": "^4.1.2",
+    "mocha": "^5.0.5",
+    "proxyquire": "^2.0.1",
+    "sinon": "^4.4.9"
+  },
+  "scripts": {
+    "test": "mocha"
   },
   "homepage": "https://github.com/anseki/htmlclean-loader",
   "repository": {
