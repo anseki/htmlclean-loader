@@ -27,7 +27,7 @@ describe('implements a basic flow as loader', () => {
     expect(htmlclean.calledOnceWithExactly('content', OPTS)).to.be.true;
   });
 
-  it('should return null if a null is input', () => {
+  it('should return a null if a null is input', () => {
     resetAll();
     expect(loader.call({loaderIndex: 1, query: OPTS}, null)).to.be.null;
     expect(htmlclean.notCalled).to.be.true;
