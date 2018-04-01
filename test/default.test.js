@@ -13,20 +13,10 @@ function resetAll() {
   htmlclean.resetHistory();
 }
 
-describe('implements a basic flow as file based loader', () => {
+describe('implements a basic flow as loader', () => {
   const OPTS = {p1: 'v1', p2: 'v2'};
 
-  it('should return null when passed value is null', () => {
-    resetAll();
-    expect(loader.call({loaderIndex: 1, query: OPTS}, null)).to.be.null;
-    expect(htmlclean.notCalled).to.be.true;
-    // Converted (loaderIndex: 0)
-    resetAll();
-    expect(loader.call({loaderIndex: 0, query: OPTS}, null)).to.equal('module.exports = null;');
-    expect(htmlclean.notCalled).to.be.true;
-  });
-
-  it('should return processed value by method', () => {
+  it('should return processed value', () => {
     resetAll();
     expect(loader.call({loaderIndex: 1, query: OPTS}, 'content')).to.equal('content<htmlclean>');
     expect(htmlclean.calledOnceWithExactly('content', OPTS)).to.be.true;
@@ -37,9 +27,19 @@ describe('implements a basic flow as file based loader', () => {
     expect(htmlclean.calledOnceWithExactly('content', OPTS)).to.be.true;
   });
 
+  it('should return null if a null is input', () => {
+    resetAll();
+    expect(loader.call({loaderIndex: 1, query: OPTS}, null)).to.be.null;
+    expect(htmlclean.notCalled).to.be.true;
+    // Converted (loaderIndex: 0)
+    resetAll();
+    expect(loader.call({loaderIndex: 0, query: OPTS}, null)).to.equal('module.exports = null;');
+    expect(htmlclean.notCalled).to.be.true;
+  });
+
 });
 
-describe('options.raw', () => {
+describe('converts output as code', () => {
   const CONVERTED = 'module.exports = "content<htmlclean>";',
     NOT_CONVERTED = 'content<htmlclean>';
 
